@@ -49,3 +49,54 @@ func TestGetGradeF(t *testing.T) {
 		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
 	}
 }
+
+func TestGetGradeC(t *testing.T) {
+	expected_value := "C"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 70, Assignment)
+	gradeCalculator.AddGrade("exam 1", 71, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 75, Essay)
+
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestGetGradeD(t *testing.T) {
+	expected_value := "D"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 61, Assignment)
+	gradeCalculator.AddGrade("exam 1", 65, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 60, Essay)
+
+	actual_value := gradeCalculator.GetFinalGrade()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestGradeTypeString(t *testing.T) {
+  AssignemntType := Assignment
+	ExamType := Exam
+	EssayType := Essay
+
+	grade_type1 := AssignemntType.String()
+	grade_type2 := ExamType.String()
+	grade_type3 := EssayType.String()
+	if grade_type1 != "assignment"{
+		t.Errorf("Error! Grade type incorrectly assigned.")
+	}
+	if grade_type2 != "exam"{
+		t.Errorf("Error! Grade type incorrectly assigned.")
+	}
+	if grade_type3 != "essay"{
+		t.Errorf("Error! Grade type incorrectly assigned.")
+	}
+}
